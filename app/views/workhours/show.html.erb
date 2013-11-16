@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Day:</b>
+  <%= @workhour.day %>
+</p>
+
+<p>
+  <b>Month:</b>
+  <%= @workhour.month %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @workhour.year %>
+</p>
+
+<p>
+  <b>Hours:</b>
+  <%= @workhour.hours %>
+</p>
+
+<p>
+  <b>Factor:</b>
+  <%= @workhour.factor %>
+</p>
+
+<p>
+  <b>Nettoloon:</b>
+  <%= @workhour.nettoLoon %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @workhour.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_workhour_path(@workhour) %> |
+<%= link_to 'Back', workhours_path %>

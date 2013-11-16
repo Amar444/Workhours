@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  day: 
+  month: 1
+  year: 1
+  hours: 
+  factor: 1
+  nettoLoon: 
+  user_id: 1
+
+two:
+  day: 
+  month: 1
+  year: 1
+  hours: 
+  factor: 1
+  nettoLoon: 
+  user_id: 1
