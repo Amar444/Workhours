@@ -12,13 +12,14 @@
   <% end %>
 
 
-  <div class="input-append date">
-     <%= f.label :date_of_workhour %><br />
-
-     <%= f.text_field :date_of_workhour, :class=>'datepicker'%> 
-     <span class="add-on"><i class="fa fa-th"></i></span>
+  <div class="input-append date datepicker">
+  	 <%= f.label :date_of_workhour %><br />
+  	 <span class="add-on"><i class="fa fa-table"></i></span>
+	 <%= f.text_field :date_of_workhour, :class=>'datepicker', :placeholder=>'Select date' %> 	 
   </div>
+  
 
+  
   <div class="field">
     <%= f.label :hours %><br />
     <%= f.text_field :hours %>

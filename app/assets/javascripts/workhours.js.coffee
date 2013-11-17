@@ -5,9 +5,12 @@
 
 
 $ ->
-  $(".datepicker ").datepicker 
+  $(".datepicker").datepicker 
+     todayBtn: "linked"
      format: "dd-mm-yyyy"
      weekStart: 1
      autoclose: true
      calendarWeeks: true
      todayHighlight: true
+     
+
