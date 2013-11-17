@@ -1,12 +1,10 @@
 class CreateWorkhours < ActiveRecord::Migration
   def change
     create_table :workhours do |t|
-      t.integer, :day
-      t.integer :month
-      t.integer :year
-      t.double :hours
+      t.date :date_of_workhour
+      t.decimal :hours
       t.integer :factor
-      t.double :nettoLoon
+      t.decimal :nettoLoon
       t.integer :user_id
 
       t.timestamps

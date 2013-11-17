@@ -2,9 +2,7 @@
 
 <table>
   <tr>
-    <th>Day</th>
-    <th>Month</th>
-    <th>Year</th>
+    <th>Date of workhour</th>
     <th>Hours</th>
     <th>Factor</th>
     <th>Nettoloon</th>
@@ -16,9 +14,7 @@
 
 <% @workhours.each do |workhour| %>
   <tr>
-    <td><%= workhour.day %></td>
-    <td><%= workhour.month %></td>
-    <td><%= workhour.year %></td>
+    <td><%= workhour.date_of_workhour %></td>
     <td><%= workhour.hours %></td>
     <td><%= workhour.factor %></td>
     <td><%= workhour.nettoLoon %></td>
