@@ -2,7 +2,7 @@ class Workhour < ActiveRecord::Base
   attr_accessible :user_id, :date_of_workhour, :hours, :factor, :net_wage, :user
   belongs_to :user, inverse_of: :workhours
   
-  validates_presence_of :user
+  validates_presence_of :user, :date_of_workhour, :hours, :factor
   
   before_create :net_wage_from_user
   
