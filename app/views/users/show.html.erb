@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>something test</p>
+<% @user.workhours.each do |workhour| %>
+ <%= workhour.date_of_workhour %><br>
+<% end %>
 
 <p>
   <b>Name:</b>

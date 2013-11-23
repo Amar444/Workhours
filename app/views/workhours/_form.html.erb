@@ -1,4 +1,4 @@
-<%= form_for(@workhour) do |f| %>
+<%= simple_form_for(@workhour) do |f| %>
   <% if @workhour.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@workhour.errors.count, "error") %> prohibited this workhour from being saved:</h2>
@@ -12,7 +12,7 @@
   <% end %>
 
 
-  <div class="input-append date"> 	 	 
+  <div class="input-append date datepicker"> 	 	 
 	  <%= f.text_field :date_of_workhour, :class=>'datepicker', :placeholder=>'Select date', id: "prependedInput" %> 
     <span class="add-on"><i class="fa fa-table"></i></span>	 
   </div>
@@ -27,13 +27,9 @@
     <%= f.label :factor %><br />
     <%= f.number_field :factor %>
   </div>
+
   <div class="field">
-    <%= f.label :net_wage %><br />
-    <%= f.text_field :net_wage %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.association :user %>
   </div>
   <div class="actions">
     <%= f.submit %>
