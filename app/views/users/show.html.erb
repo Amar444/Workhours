@@ -21,20 +21,25 @@
 <%= link_to 'Edit User', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 
-
-<% totalhours = 0 %>
-<% totalmoney = 0 %>
 <table class="table table-striped">
 	<th>Date of workhour</th><th>Hours worked</th><th>Factor % </th><th>Net hourly wage</th><th>Earned money this day</th>
- 		<% @user.workhours.each do |workhour| %>
- 		<% totaltoday =  (workhour.hours * workhour.net_wage) / 100 * workhour.factor  %>
- 		<% totalhours += workhour.hours   %>
- 		<% totalmoney += totaltoday  %> 
- 		<tr> <td><%= workhour.date_of_workhour %> </td><td><%= workhour.hours %></td><td><%= workhour.factor %>%</td><td>&euro;<%= workhour.net_wage %> </td> <td>&euro;<%= totaltoday %></td></tr>
+ 		<% @user.workhours.each do |workhour| %> 		
+   		<tr> 
+        <td><%= workhour.date_of_workhour %> </td>
+        <td><%= workhour.hours %></td>
+        <td><%= workhour.factor %>%</td>
+        <td>&euro;<%= workhour.net_wage %> </td>
+        <td>&euro;<%= workhour.total_gain %></td>
+      </tr>
  		<% end %>
 </table>
 
 <table class="table table-striped">
-	<tr><td><b>Total hours worked</b></td> <td><%= totalhours %></td> </tr>
-	<tr><td><b><%= totalhours %> </b></td> <td><%= totalmoney %> </td> </tr>
+	<tr>
+    <td><b>Total hours worked</b></td>
+    <td><%= @user.total_hours %></td> </tr>
+	<tr>
+    <td><b>Total money gained</b></td> 
+    <td><%= @user.total_net_gain %> </td>
+  </tr>
 </table>

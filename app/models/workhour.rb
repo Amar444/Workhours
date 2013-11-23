@@ -11,4 +11,8 @@ class Workhour < ActiveRecord::Base
   def net_wage_from_user
     write_attribute(:net_wage, user.hourly_net_wage)    
   end
+
+  def total_gain
+    (hours * net_wage) * (factor / 100)
+  end
 end
