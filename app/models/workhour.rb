@@ -6,6 +6,8 @@ class Workhour < ActiveRecord::Base
   
   before_create :net_wage_from_user
   
+  default_scope :order => 'date_of_workhour DESC'
+  
   def net_wage_from_user
     write_attribute(:net_wage, user.hourly_net_wage)    
   end
