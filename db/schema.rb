@@ -11,21 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131116134933) do
+ActiveRecord::Schema.define(:version => 20131123122642) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
-    t.decimal  "brutoUurLoon"
-    t.decimal  "nettoUurLoon"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.decimal  "hourly_gross"
+    t.decimal  "hourly_net_wage"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "workhours", :force => true do |t|
     t.date     "date_of_workhour"
     t.decimal  "hours"
     t.integer  "factor"
-    t.decimal  "nettoLoon"
+    t.decimal  "net_wage"
     t.integer  "user_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
