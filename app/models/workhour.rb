@@ -13,6 +13,6 @@ class Workhour < ActiveRecord::Base
   end
 
   def total_gain
-    (hours * net_wage) * (factor / 100)
+    (hours * net_wage / 100) * (factor)
   end
 end

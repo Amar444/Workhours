@@ -1,28 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div id="topbar">
+	<%= link_to 'Back to users', users_path, class: "btn btn-primary btn-sm" %> 
+	<%= link_to 'Edit User', edit_user_path(@user), class: "btn btn-primary btn-sm" %>
+	<%= link_to 'Add workhour', new_workhour_path(@workhour), class: "btn btn-success" %>	
+	
+	<span class="userinfo">
+		<b><%= @user.name %>:</b>
+		<b>Bruto:</b> &euro;<%= @user.hourly_gross %> 
+		<b>Netto:</b> &euro;<%= @user.hourly_net_wage %>
+	</span>
+	<span class="userdata">
+		<b>total hours: </b> <%= @user.total_hours %> 
+		<b>total money:</b> &euro;<%= @user.total_net_gain %> 
+	</span>
+	
+</div>
 
-
-
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Gross hourly wage: </b>
-  <%= @user.hourly_gross %>
-</p>
-
-<p>
-  <b>Net hourly wage:</b>
-  <%= @user.hourly_net_wage %>
-</p>
-
-
-<%= link_to 'Edit User', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div style="height:80px;"></div>
+<%= notice %>
 
 <table class="table table-striped">
-	<th>Date of workhour</th><th>Hours worked</th><th>Factor % </th><th>Net hourly wage</th><th>Earned money this day</th>
+	<th>Date of workday</th><th>Hours worked</th><th>Factor % </th><th>Net hourly wage</th><th>Earned money this day</th><th>Action</th>
  		<% @user.workhours.each do |workhour| %> 		
    		<tr> 
         <td><%= workhour.date_of_workhour %> </td>
@@ -30,16 +27,10 @@
         <td><%= workhour.factor %>%</td>
         <td>&euro;<%= workhour.net_wage %> </td>
         <td>&euro;<%= workhour.total_gain %></td>
+        <td><%= link_to 'Edit', edit_workhour_path(workhour), class: "btn btn-primary btn-sm" %>
+        	<%= link_to 'Delete', workhour, class: "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' }  %>	</td>
       </tr>
  		<% end %>
+ 		
 </table>
 
-<table class="table table-striped">
-	<tr>
-    <td><b>Total hours worked</b></td>
-    <td><%= @user.total_hours %></td> </tr>
-	<tr>
-    <td><b>Total money gained</b></td> 
-    <td><%= @user.total_net_gain %> </td>
-  </tr>
-</table>
