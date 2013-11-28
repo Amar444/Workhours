@@ -24,11 +24,12 @@ class WorkhoursController < ApplicationController
   # GET /workhours/new
   # GET /workhours/new.json
   def new
+    @user = User.find(params[:user_id])
     @workhour = Workhour.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @workhour }
+      format.js
     end
   end
 
@@ -40,11 +41,12 @@ class WorkhoursController < ApplicationController
   # POST /workhours
   # POST /workhours.json
   def create
-    @workhour = Workhour.new(params[:workhour])
+    @user = User.find(params[:user_id])
+    @workhour = @user.workhours.build(params[:workhour])
 
     respond_to do |format|
       if @workhour.save
-        format.html { redirect_to @workhour, notice: 'Workhour was successfully created.' }
+        format.html { redirect_to @user, notice: 'Workhour was successfully created.' }
         format.json { render json: @workhour, status: :created, location: @workhour }
       else
         format.html { render action: "new" }
@@ -73,10 +75,11 @@ class WorkhoursController < ApplicationController
   # DELETE /workhours/1.json
   def destroy
     @workhour = Workhour.find(params[:id])
+    @user = User.find(params[:user_id])
     @workhour.destroy
 
     respond_to do |format|
-      format.html { redirect_to workhours_url }
+      format.html { redirect_to @user, notice: "WHEWAKLDJSKDJ" }
       format.json { head :no_content }
     end
   end

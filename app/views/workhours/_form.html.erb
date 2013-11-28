@@ -1,4 +1,5 @@
-<%= simple_form_for(@workhour) do |f| %>
+<%= simple_form_for([:user, @workhour]) do |f| %>
+  <div class="modal-body">
   <% if @workhour.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@workhour.errors.count, "error") %> prohibited this workhour from being saved:</h2>
@@ -28,10 +29,14 @@
     <%= f.number_field :factor %>
   </div>
 
-  <div class="field">
-    <%= f.association :user %>
+
   </div>
+  <div class="modal-footer">
   <div class="actions">
     <%= f.submit %>
-  </div>
+  </div></div>
 <% end %>
+
+<script>
+	create_datepicker();
+</script>

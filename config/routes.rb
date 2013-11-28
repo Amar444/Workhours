@@ -1,8 +1,11 @@
 Workhours::Application.routes.draw do
-  resources :workhours
+  
 
 
-  resources :users
+  resources :users do 
+    resources :workhours
+  
+  end
 
 
   # The priority is based upon order of creation:

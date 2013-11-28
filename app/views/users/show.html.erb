@@ -1,7 +1,7 @@
 <div id="topbar">
 	<%= link_to 'Back to users', users_path, class: "btn btn-primary btn-sm" %> 
-	<%= link_to 'Edit User', edit_user_path(@user), class: "btn btn-primary btn-sm" %>
-	<%= link_to 'Add workhour', new_workhour_path(@workhour), class: "btn btn-success" %>	
+	<%= link_to 'Edit User', edit_user_path(@user), { remote: true, 'data-toggle' => "modal", 'data-target' => "#modal-window",  class: "btn btn-primary btn-sm" }%>
+	<%= link_to 'Add workhour', new_user_workhour_path(@user), { remote: true, 'data-toggle' => "modal", 'data-target' => "#modal-window",  class: "btn btn-success" }  %>	
 	
 	<span class="userinfo">
 		<b><%= @user.name %>:</b>
@@ -16,8 +16,9 @@
 </div>
 
 <div style="height:80px;"></div>
-<%= notice %>
-
+<% if notice %>
+	<div class="alert alert-success"><%= notice %></div>
+<% end %>
 <table class="table table-striped">
 	<th>Date of workday</th><th>Hours worked</th><th>Factor % </th><th>Net hourly wage</th><th>Earned money this day</th><th>Action</th>
  		<% @user.workhours.each do |workhour| %> 		
@@ -27,10 +28,16 @@
         <td><%= workhour.factor %>%</td>
         <td>&euro;<%= workhour.net_wage %> </td>
         <td>&euro;<%= workhour.total_gain %></td>
-        <td><%= link_to 'Edit', edit_workhour_path(workhour), class: "btn btn-primary btn-sm" %>
-        	<%= link_to 'Delete', workhour, class: "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' }  %>	</td>
+        <td><%= link_to 'Edit', edit_user_workhour_path(@user, workhour), { remote: true, 'data-toggle' => "modal", 'data-target' => "#modal-window",  class: "btn btn-primary btn-sm" }%>
+        	<%= link_to 'Delete', user_workhour_path(@user, workhour), class: "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' }  %>	</td>
       </tr>
  		<% end %>
  		
 </table>
+
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel", aria-hidden="true">
+	
+<script>
+	hide_notice_after(5, ".alert-success");
+</script>
 

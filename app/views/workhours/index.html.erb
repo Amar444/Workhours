@@ -1,31 +1,38 @@
-<h1>Listing workhours</h1>
+<div id="topbar">
+	<%= link_to 'Back to users', users_path, class: "btn btn-primary btn-sm" %> 
+	<%= link_to 'Edit User', edit_user_path(@user), class: "btn btn-primary btn-sm" %>
+	<%= link_to 'Add workhour', new_user_workhour_path(@workhour), { remote: true, 'data-toggle' => "modal", 'data-target' => "#modal-window",  class: "btn btn-success" }  %>	
+	
+	<span class="userinfo">
+		<b><%= @user.name %>:</b>
+		<b>Bruto:</b> &euro;<%= @user.hourly_gross %> 
+		<b>Netto:</b> &euro;<%= @user.hourly_net_wage %>
+	</span>
+	<span class="userdata">
+		<b>total hours: </b> <%= @user.total_hours %> 
+		<b>total money:</b> &euro;<%= @user.total_net_gain %> 
+	</span>
+	
+</div>
 
-<table>
-  <tr>
-    <th>Date of workhour</th>
-    <th>Hours</th>
-    <th>Factor</th>
-    <th>Nettoloon</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div style="height:80px;"></div>
+<%= notice %>
 
-<% @workhours.each do |workhour| %>
-  <tr>
-    <td><%= workhour.date_of_workhour %></td>
-    <td><%= workhour.hours %></td>
-    <td><%= workhour.factor %></td>
-    <td><%= workhour.net_wage %></td>
-    <td><%= workhour.user_id %></td>
-    <td><%= link_to 'Show', workhour %></td>
-    <td><%= link_to 'Edit', edit_workhour_path(workhour) %></td>
-    <td><%= link_to 'Destroy', workhour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<table class="table table-striped">
+	<th>Date of workday</th><th>Hours worked</th><th>Factor % </th><th>Net hourly wage</th><th>Earned money this day</th><th>Action</th>
+ 		<% @user.workhours.each do |workhour| %> 		
+   		<tr> 
+        <td><%= workhour.date_of_workhour %> </td>
+        <td><%= workhour.hours %></td>
+        <td><%= workhour.factor %>%</td>
+        <td>&euro;<%= workhour.net_wage %> </td>
+        <td>&euro;<%= workhour.total_gain %></td>
+        <td><%= link_to 'Edit', edit_user_workhour_path(workhour), class: "btn btn-primary btn-sm" %>
+        	<%= link_to 'Delete', user_workhour_path(workhour), class: "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' }  %>	</td>
+      </tr>
+ 		<% end %>
+ 		
 </table>
 
-<br />
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel", aria-hidden="true">
 
-<%= link_to 'New Workhour', new_workhour_path %>

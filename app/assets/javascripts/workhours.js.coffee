@@ -4,7 +4,7 @@
 
 
 
-$ ->
+@create_datepicker = () ->
   $(".datepicker").datepicker 
      todayBtn: "linked"
      format: "dd-mm-yyyy"
